@@ -1,9 +1,14 @@
 pipeline {
     agent any
+    
+    tools {
+        maven 'localMaven'
+    }
+
     stages{
         stage('Build'){
             steps {
-                sh '/var/jenkins_home/apache-maven-3.5.4/bin/mvn clean package'
+                sh 'mvn clean package'
             }
             post {
                 success {
